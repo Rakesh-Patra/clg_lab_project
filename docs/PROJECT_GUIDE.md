@@ -23,13 +23,15 @@ CREATE USER IF NOT EXISTS 'placement_user'@'localhost' IDENTIFIED BY 'YOUR_CHOSE
 GRANT ALL PRIVILEGES ON placement_db.* TO 'placement_user'@'localhost';
 ```
 
-Set your local app database password and an initial admin password, then run:
+In PowerShell, set the password you used when creating the MySQL app user and choose an initial admin password (8 or more characters), then run:
 
 ```powershell
+$env:DB_PASSWORD = 'your chosen app database password'
+$env:ADMIN_INITIAL_PASSWORD = 'choose an admin password with at least 8 characters'
 .\run.bat
 ```
 
-The first launch creates/migrates the tables and sample company/drive data. Open <http://localhost:8080>. Use Ctrl+C to stop the server. For custom DB credentials, set `DB_URL`, `DB_USER`, and `DB_PASSWORD` before running.
+The first launch creates/migrates the tables and sample company/drive data. Open <http://localhost:8080>. Use Ctrl+C to stop the server. Set `DB_PASSWORD` again in each new PowerShell window. `ADMIN_INITIAL_PASSWORD` is needed only on the first launch that creates the admin account. For custom DB credentials, set `DB_URL` and `DB_USER` before running.
 
 ## Main features
 
